@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  api:
+    build: .
+    container_name: api
+    tty: true
+    restart: 'unless-stopped'
+    ports:
+      - '3333:3333'
+    volumes:
+      - ".:/usr/src/app"
+      # - "/usr/src/app/node_modules"
+
+  mysql-db:
+    image: mysql:latest
+    tty: true
+    restart: 'unless-stopped'
+    container_name: mysql-db
+    environment:
+      - MYSQL_DATABASE=db_production
+      - MYSQL_ROOT_PASSWORD=12345
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+    driver: local
