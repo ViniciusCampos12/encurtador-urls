@@ -16,6 +16,7 @@ export class ShortnedUrlRepository implements IShortnedUrlRepository {
         const raw = await this.prisma.shortnedUrl.findUnique({
             where: {
                 shortCode,
+                deletedAt: null
             }
         })
 
@@ -31,8 +32,20 @@ export class ShortnedUrlRepository implements IShortnedUrlRepository {
         await this.prisma.shortnedUrl.update({
             where: {
                 id: raw.id,
+                deletedAt: null
             },
             data: raw,
         });
+    }
+
+    async getByUserId(userId: string): Promise<ShortnedUrlEntitiy[]> {
+        const shortnedUrls = await this.prisma.shortnedUrl.findMany({
+            where: {
+                userId: userId,
+                deletedAt: null
+            }
+        })
+
+        return shortnedUrls.map(ShortnedUrlMapper.toDomain);
     }
 }

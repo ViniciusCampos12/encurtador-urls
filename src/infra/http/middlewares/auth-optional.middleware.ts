@@ -10,18 +10,22 @@ export async function authOptionalMiddleware(req: Request, res: Response, next: 
         return next();
     }
 
-    const token = authHeader.split(" ")[1];
-    const decoded = await verifyToken(token);
-    const userRepository = new UserRepository();
-    const user = await userRepository.findById(decoded.sub);
+    try {
+        const token = authHeader.split(" ")[1];
+        const decoded = await verifyToken(token);
+        const userRepository = new UserRepository();
+        const user = await userRepository.findById(decoded.sub);
 
-    if (!user) {
-        res.status(401).json({ message: "unauthorized" });
-        return;
+        if (!user) {
+            res.status(401).json({ message: "unauthorized" });
+            return;
+        }
+
+        req.user = user;
+        next();
+    } catch (error) {
+        return res.status(401).json({ message: "unauthorized" });
     }
-
-    req.user = user;
-    next();
 }
 
 function verifyToken(token: string): Promise<any> {

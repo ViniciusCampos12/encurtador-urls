@@ -2,32 +2,37 @@ import { UserRepository } from './../../database/prisma/repositories/user.reposi
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 
-export function authMiddleware(req: Request, res: Response, next: NextFunction) {
+export async function authMiddleware(req: Request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-        return res.status(401).json({ message: "Token not found!" });
+        res.status(401).json({ message: "unauthorized" });
     }
 
-    const token = authHeader.split(" ")[1];
+    try {
 
-    jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
-        if (err) {
-            return res.status(401).json({ message: "Token invalid!" });
+        const token = authHeader.split(" ")[1];
+        const decoded = await verifyToken(token);
+        const userRepository = new UserRepository();
+        const user = await userRepository.findById(decoded.sub);
+
+        if (!user) {
+            res.status(401).json({ message: "unauthorized" });
+            return;
         }
 
-        if (decoded && typeof decoded.sub === "string") {
-            const userRepository = new UserRepository();
-            userRepository.findById(decoded.sub).then(user => {
-                if (!user) {
-                    return res.status(401).json({ message: "unauthorized" });
-                }
-
-                req.user = user;
-            }
-            );
-        }
-
+        req.user = user;
         next();
+    } catch (error) {
+        return res.status(401).json({ message: "unauthorized" });
+    }
+}
+
+function verifyToken(token: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+        jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
+            if (err) reject(new Error("Token invalid!"));
+            else resolve(decoded);
+        });
     });
 }

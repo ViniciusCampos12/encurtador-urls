@@ -12,7 +12,7 @@ compactUrlRouter.get("/:shortCode",
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             const shortCode = req.params.shortCode;
-            const url = await compactUrlController.handle(shortCode);
+            const { url } = await compactUrlController.handle(shortCode);
             return res.redirect(url);
         } catch (err) {
             next(err);
