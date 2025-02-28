@@ -148,6 +148,9 @@ POST /api/shortned-urls/shorten
 
 ## 🛠️ Pontos de Melhoria  
 
+### 🔹 Importância dos Testes na Aplicação  
+É fundamental a utilização de **testes automatizados**, tanto de integração quanto unitários, em qualquer aplicação. Esses testes não apenas ajudam a **evitar bugs**, mas também servem como **documentação viva** do código, garantindo que todas as partes do sistema funcionem conforme o esperado. Além disso, a implementação desses testes **mantém a estabilidade** do código, permitindo modificações e evoluções de forma controlada e segura.
+
 ### 🔹 Implementação do NGINX como Load Balancer  
 A integração do NGINX como balanceador de carga pode **melhorar a performance** da aplicação e **aumentar a segurança**, distribuindo as requisições de forma eficiente entre os servidores.  
 
