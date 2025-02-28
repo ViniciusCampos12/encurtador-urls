@@ -7,7 +7,7 @@ export class UserRegisterController {
 
     async handle(body: UserRegisterDto): Promise<void> {
         try {
-            await this.userRegisterUseCase.execute(body);
+           await this.userRegisterUseCase.execute(body);
         } catch (err) {
             if (err instanceof UserExistsError) {
                 throw err;

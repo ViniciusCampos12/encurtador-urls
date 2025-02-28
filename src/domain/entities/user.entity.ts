@@ -1,10 +1,10 @@
 interface IUserEntity {
-    id?: string,
-    name: string,
-    email: string,
-    password: string,
-    loggedAt?: Date,
-    updatedAt?: Date,
+    id?: string
+    name: string
+    email: string
+    password: string
+    loggedAt?: Date
+    updatedAt?: Date
     createdAt?: Date
 }
 

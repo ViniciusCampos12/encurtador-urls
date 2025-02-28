@@ -17,6 +17,7 @@ userRouter.post("/register", validationMiddleware(UserRegisterDto),
     async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { name, password, email } = req.body;
+
             await userRegisterController.handle({
                 name, password, email
             });

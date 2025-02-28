@@ -21,6 +21,7 @@ export class UserRegisterUseCase {
         }
 
         const hashedPassword = await HashPasswordHelper.cryptPassword(password);
+        
         const user = new UserEntitiy({
             name,
             email,
