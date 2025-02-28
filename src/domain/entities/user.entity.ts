@@ -47,6 +47,10 @@ export class UserEntitiy {
         return this._loggedAt;
     }
 
+    public set loggedAt(loggedAt: Date) {
+        this._loggedAt = loggedAt;
+    }
+
     public get updatedAt(): Date | undefined {
         return this._updatedAt;
     }

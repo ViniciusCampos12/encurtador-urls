@@ -12,8 +12,43 @@ export class UserRepository implements IUserRepository {
             data: UserMapper.toPrisma(user),
         })
     }
-    findByEmail(email: string): Promise<UserEntitiy> {
-        throw new Error("Method not implemented.");
+
+    async findByEmail(email: string): Promise<UserEntitiy | null> {
+        const raw = await this.prisma.user.findUnique({
+            where: {
+                email,
+            }
+        })
+
+        if (!raw) {
+            return null;
+        }
+
+        return UserMapper.toDomain(raw);
+    }
+
+    async findById(id: string): Promise<UserEntitiy | null> {
+        const raw = await this.prisma.user.findUnique({
+            where: {
+                id,
+            }
+        })
+
+        if (!raw) {
+            return null;
+        }
+
+        return UserMapper.toDomain(raw);
+    }
+
+    async save(user: UserEntitiy): Promise<void> {
+        const raw = UserMapper.toPrisma(user);
+        await this.prisma.user.update({
+            where: {
+                id: raw.id,
+            },
+            data: raw,
+        });
     }
 
 

@@ -14,7 +14,6 @@ export class UserRegisterUseCase {
 
     async execute(params: IUserRegister): Promise<void> {
         const { name, email, password } = params;
-
         const userExists = await this.userRepository.findByEmail(email);
 
         if (userExists) {

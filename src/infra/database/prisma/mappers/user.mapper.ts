@@ -4,9 +4,11 @@ import { UserEntitiy } from "../../../../domain/entities/user.entity.js";
 export class UserMapper {
     static toPrisma(user: UserEntitiy) {
         return {
+            id: user.id,
             name: user.name,
             email: user.email,
             password: user.password,
+            loggedAt: user.password,
         }
     }
 
