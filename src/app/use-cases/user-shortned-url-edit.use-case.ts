@@ -1,29 +1,29 @@
-import { ShortnedUrlEntitiy } from './../../domain/entities/shortned-url.entity.js';
-import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository.js";
+import { ShortnedUrlEntitiy } from "../../domain/entities/shortned-url.entity.js";
+import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository.js"
 import { ShortnedUrlNotFound } from "../errors/shortned-url-not-found.error.js";
 
-interface IUserShortnedUrlDelete {
+interface IUserShortnedUrlEdit {
     userId: string
     id: string
+    originalEndpoint: string
 }
 
-export class UserShortnedUrlDeleteUseCase {
+export class UserShortnedUrlEditUseCase {
     constructor(private readonly shortnedUrlsRepository: IShortnedUrlRepository) { }
 
-    async execute(params: IUserShortnedUrlDelete): Promise<void> {
-        const { userId, id } = params;
+    async execute(params: IUserShortnedUrlEdit): Promise<void> {
+        const { userId, id, originalEndpoint } = params;
         const userShortnedUrl = await this.shortnedUrlsRepository.findByUserIdAndId(userId, id);
 
         if (!userShortnedUrl) {
-            throw new ShortnedUrlNotFound("Unable to delete url. Try again please");
+            throw new ShortnedUrlNotFound("Unable to update url. Try again please");
         }
         const updateShortnedUrlEntitiy = new ShortnedUrlEntitiy({
             id: userShortnedUrl.id,
             shortCode: userShortnedUrl.shortCode,
-            originalEndpoint: userShortnedUrl.originalEndpoint,
+            originalEndpoint,
             shortnedEndpoint: userShortnedUrl.shortnedEndpoint,
             clicks: userShortnedUrl.clicks,
-            deletedAt: new Date()
         })
 
         await this.shortnedUrlsRepository.save(updateShortnedUrlEntitiy);
