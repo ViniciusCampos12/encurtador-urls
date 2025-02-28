@@ -82,7 +82,7 @@ userRouter.delete("/shortned-urls/:id/delete", authMiddleware,
             const user = req.user as UserEntitiy;
             const id = req.params.id;
             await userShortnedUrlDeleteController.handle(user, id);
-            res.status(204);
+            res.status(204).json();
         } catch (err) {
             next(err);
         }
