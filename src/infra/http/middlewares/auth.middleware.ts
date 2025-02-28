@@ -7,6 +7,7 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
 
     if (!authHeader) {
         res.status(401).json({ message: "unauthorized" });
+        return;
     }
 
     try {
@@ -24,7 +25,8 @@ export async function authMiddleware(req: Request, res: Response, next: NextFunc
         req.user = user;
         next();
     } catch (error) {
-        return res.status(401).json({ message: "unauthorized" });
+        res.status(401).json({ message: "unauthorized" });
+        return;
     }
 }
 

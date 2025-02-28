@@ -1,3 +1,4 @@
+import { UserShortnedUrlDeleteUseCase } from './../../../app/use-cases/user-shortned-url-delete.use-case.js';
 import { UserShortnedUrlsListController } from './../controllers/user-shortned-urls-list.controller.js';
 import { validationMiddleware } from './../middlewares/validator.middleware.js';
 import { UserRepository } from './../../database/prisma/repositories/user.repository.js';
@@ -12,6 +13,7 @@ import { authMiddleware } from '../middlewares/auth.middleware.js';
 import { UserShortnedUrlsListUseCase } from '../../../app/use-cases/user-shortned-urls-list.use-case.js';
 import { ShortnedUrlRepository } from '../../database/prisma/repositories/shortned-url.repository.js';
 import { UserEntitiy } from '../../../domain/entities/user.entity.js';
+import { UserShortnedUrlDeleteController } from '../controllers/user-shortned-url-delete.controller.js';
 
 const userRouter = Router();
 const userRepository = new UserRepository();
@@ -62,6 +64,22 @@ userRouter.get("/shortned-urls/list", authMiddleware,
             const user = req.user as UserEntitiy;
             const userShortnedUrlsList = await userShortnedUrlsListController.handle(user);
             res.status(200).json({ "shortned-urls": userShortnedUrlsList });
+        } catch (err) {
+            next(err);
+        }
+    }
+);
+
+const userShortnedUrlDeleteUseCase = new UserShortnedUrlDeleteUseCase(shortnedUrlRepository);
+const userShortnedUrlDeleteController = new UserShortnedUrlDeleteController(userShortnedUrlDeleteUseCase);
+
+userRouter.delete("/shortned-urls/:id/delete", authMiddleware,
+    async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const user = req.user as UserEntitiy;
+            const id = req.params.id;
+            await userShortnedUrlDeleteController.handle(user, id);
+            res.status(204).json({ status: "successfully registered." });
         } catch (err) {
             next(err);
         }

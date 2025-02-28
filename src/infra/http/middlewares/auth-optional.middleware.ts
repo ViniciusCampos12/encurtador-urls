@@ -24,7 +24,8 @@ export async function authOptionalMiddleware(req: Request, res: Response, next: 
         req.user = user;
         next();
     } catch (error) {
-        return res.status(401).json({ message: "unauthorized" });
+        res.status(401).json({ message: "unauthorized" });
+        return;
     }
 }
 

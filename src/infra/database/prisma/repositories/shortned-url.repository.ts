@@ -48,4 +48,20 @@ export class ShortnedUrlRepository implements IShortnedUrlRepository {
 
         return shortnedUrls.map(ShortnedUrlMapper.toDomain);
     }
+
+    async findByUserIdAndId(userId: string, id: string): Promise<ShortnedUrlEntitiy | null> {
+        const raw = await this.prisma.shortnedUrl.findUnique({
+            where: {
+                userId,
+                id,
+                deletedAt: null
+            }
+        })
+
+        if (!raw) {
+            return null;
+        }
+
+        return ShortnedUrlMapper.toDomain(raw);
+    }
 }
