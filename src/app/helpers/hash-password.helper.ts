@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export class HashPasswordHelper {
     public static async cryptPassword(password: string): Promise<string> {
