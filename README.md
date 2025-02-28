@@ -5,7 +5,15 @@
 ## Requisitos  
 
 - Docker e Docker Compose instalados  
-- Git  
+- Git
+
+## ⚠️ Configuração do Arquivo `.env`  
+
+Antes de iniciar a aplicação, copie todo o conteúdo do arquivo `.env.example` e cole em um novo arquivo chamado `.env`.  
+
+🚨 **Atenção:** **Jamais** suba o arquivo `.env` para produção ou repositórios públicos. Isso é uma **prática incorreta** que pode expor dados sensíveis.  
+Neste caso, o arquivo `.env.example` é disponibilizado apenas para fins de configuração local, onde não há riscos.  
+
 
 ### Passo a passo para executar a aplicação  
 
