@@ -118,7 +118,7 @@ DELETE /api/users/shortned-urls/{id}/delete
 
 ## 🔗 **URLs Encurtadas**  
 
-### 🔽 Criar uma URL Encurtada (Requer Autenticação)  
+### 🔽 Criar uma URL Encurtada (Autenticação Opcional)  
 **Endpoint:**  
 ```http
 POST /api/shortned-urls/shorten
@@ -127,7 +127,7 @@ POST /api/shortned-urls/shorten
 - `originalEndpoint`: URL que será encurtada  
 
 **Descrição:** Gera um link encurtado para uma URL informada.  
-✅ **OBS:** Passar o **Bearer Token** no cabeçalho da requisição.  
+✅ **OBS:** O envio do **Bearer Token** no cabeçalho da requisição é opcional. Se fornecido, ele será validado e deve ser um token válido. Caso contrário, o usuário ainda poderá encurtar a URL sem necessidade de autenticação.
 
 ---
 
