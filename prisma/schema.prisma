@@ -23,6 +23,7 @@ model User {
   createdAt   DateTime      @default(now())
   ShortnedUrl ShortnedUrl[]
 
+  @@index([email])
   @@map("users")
 }
 
@@ -38,6 +39,10 @@ model ShortnedUrl {
   deletedAt        DateTime?
   User             User?     @relation(fields: [userId], references: [id])
 
-  @@index([deletedAt])
+  @@index([shortCode, deletedAt])
+  @@index([id, deletedAt])
+  @@index([userId, deletedAt])
+  @@index([userId, id, deletedAt])
+
   @@map("shortned_urls")
 }
