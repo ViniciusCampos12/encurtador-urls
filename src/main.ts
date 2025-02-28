@@ -10,7 +10,6 @@ const apiRouter = Router();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(errorHandlerr);
 
 apiRouter.use("/users", userRouter);
 apiRouter.use("/shortned-urls", shortnedUrlRouter);
@@ -18,6 +17,7 @@ apiRouter.use("/shortned-urls", shortnedUrlRouter);
 app.use("/api", apiRouter);
 app.use("/", compactUrlRouter);
 
+app.use(errorHandlerr);
 app.listen(port, () => {
     console.log('start!')
 });
