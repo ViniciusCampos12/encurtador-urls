@@ -13,5 +13,3 @@ COPY --chown=node:node . .
 USER node
 
 EXPOSE 3333
-
-# CMD [ "npm", "run", "start:dev" ]
