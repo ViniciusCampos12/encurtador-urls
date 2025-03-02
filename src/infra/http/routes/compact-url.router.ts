@@ -1,7 +1,7 @@
-import { CompactUrlUseCase } from './../../../app/use-cases/compact-url.use-case.js';
+import { CompactUrlUseCase } from './../../../app/use-cases/compact-url.use-case';
 import { Router, Request, Response, NextFunction } from "express";
-import { ShortnedUrlRepository } from "../../database/prisma/repositories/shortned-url.repository.js";
-import { CompactUrlController } from '../controllers/compact-url.controller.js';
+import { ShortnedUrlRepository } from "../../database/prisma/repositories/shortned-url.repository";
+import { CompactUrlController } from '../controllers/compact-url.controller';
 
 const compactUrlRouter = Router();
 const shortnedUrlRepository = new ShortnedUrlRepository();

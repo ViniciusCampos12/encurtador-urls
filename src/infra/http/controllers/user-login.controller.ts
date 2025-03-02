@@ -1,7 +1,7 @@
-import { UserInvalidPasswordError } from "../../../app/errors/user-invalid-password.error.js";
-import { UserNotFoundError } from "../../../app/errors/user-not-found.error.js";
-import { UserLoginUseCase } from "../../../app/use-cases/user-login.use-case.js";
-import { UserLoginDto } from "../dtos/user-login.dto.js";
+import { UserInvalidPasswordError } from "../../../app/errors/user-invalid-password.error";
+import { UserNotFoundError } from "../../../app/errors/user-not-found.error";
+import { UserLoginUseCase } from "../../../app/use-cases/user-login.use-case";
+import { UserLoginDto } from "../dtos/user-login.dto";
 
 interface UserLoginResponse {
     jwt: string

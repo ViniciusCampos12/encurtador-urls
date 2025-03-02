@@ -1,6 +1,6 @@
-import { ShortnedUrlEntitiy } from "../../domain/entities/shortned-url.entity.js";
-import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository.js"
-import { ShortnedUrlNotFound } from "../errors/shortned-url-not-found.error.js";
+import { ShortnedUrlEntitiy } from "../../domain/entities/shortned-url.entity";
+import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository"
+import { ShortnedUrlNotFound } from "../errors/shortned-url-not-found.error";
 
 interface IUserShortnedUrlEdit {
     userId: string

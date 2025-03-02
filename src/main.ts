@@ -1,8 +1,8 @@
 import express, { Router } from "express";
-import { errorHandlerr } from "./infra/http/middlewares/error-handler.js";
-import userRouter from "./infra/http/routes/user.router.js";
-import shortnedUrlRouter from "./infra/http/routes/shorted-url.router.js";
-import compactUrlRouter from "./infra/http/routes/compact-url.router.js";
+import { errorHandlerr } from "./infra/http/middlewares/error-handler";
+import userRouter from "./infra/http/routes/user.router";
+import shortnedUrlRouter from "./infra/http/routes/shorted-url.router";
+import compactUrlRouter from "./infra/http/routes/compact-url.router";
 
 export const app = express();
 const port = 3333;

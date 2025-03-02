@@ -1,5 +1,5 @@
 import { ShortnedUrl } from "@prisma/client";
-import { ShortnedUrlEntitiy } from "../../../../domain/entities/shortned-url.entity.js";
+import { ShortnedUrlEntitiy } from "../../../../domain/entities/shortned-url.entity";
 
 export class ShortnedUrlMapper {
     static toPrisma(shortnedUrl: ShortnedUrlEntitiy) {

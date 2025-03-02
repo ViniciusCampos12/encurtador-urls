@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { IShortnedUrlRepository } from "../../../../domain/repositories/shortned-url.repository.js";
-import { ShortnedUrlEntitiy } from "../../../../domain/entities/shortned-url.entity.js";
-import { ShortnedUrlMapper } from "../mappers/shortned-url.mapper.js";
+import { IShortnedUrlRepository } from "../../../../domain/repositories/shortned-url.repository";
+import { ShortnedUrlEntitiy } from "../../../../domain/entities/shortned-url.entity";
+import { ShortnedUrlMapper } from "../mappers/shortned-url.mapper";
 
 export class ShortnedUrlRepository implements IShortnedUrlRepository {
     private readonly prisma: PrismaClient = new PrismaClient();

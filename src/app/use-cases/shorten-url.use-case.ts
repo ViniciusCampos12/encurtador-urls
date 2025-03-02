@@ -1,7 +1,7 @@
-import { ShortnedUrlEntitiy } from './../../domain/entities/shortned-url.entity.js';
-import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository.js";
-import { UserEntitiy } from '../../domain/entities/user.entity.js';
-import { ShortenUrlShortCodeExistsError } from '../errors/shorten-url-short-code-exists.error.js';
+import { ShortnedUrlEntitiy } from './../../domain/entities/shortned-url.entity';
+import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository";
+import { UserEntitiy } from '../../domain/entities/user.entity';
+import { ShortenUrlShortCodeExistsError } from '../errors/shorten-url-short-code-exists.error';
 
 interface IShortenUrl {
     originalEndpoint: string;

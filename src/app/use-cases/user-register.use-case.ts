@@ -1,7 +1,7 @@
-import { UserEntitiy } from "../../domain/entities/user.entity.js";
-import { IUserRepository } from "../../domain/repositories/user.repository.js";
-import { UserExistsError } from "../errors/user-exists.error.js";
-import { HashPasswordHelper } from "../helpers/hash-password.helper.js";
+import { UserEntitiy } from "../../domain/entities/user.entity";
+import { IUserRepository } from "../../domain/repositories/user.repository";
+import { UserExistsError } from "../errors/user-exists.error";
+import { HashPasswordHelper } from "../helpers/hash-password.helper";
 
 interface IUserRegister {
     name: string;

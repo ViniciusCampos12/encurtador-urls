@@ -1,7 +1,7 @@
-import { IUserRepository } from "../../domain/repositories/user.repository.js";
-import { UserInvalidPasswordError } from "../errors/user-invalid-password.error.js";
-import { UserNotFoundError } from "../errors/user-not-found.error.js";
-import { HashPasswordHelper } from "../helpers/hash-password.helper.js";
+import { IUserRepository } from "../../domain/repositories/user.repository";
+import { UserInvalidPasswordError } from "../errors/user-invalid-password.error";
+import { UserNotFoundError } from "../errors/user-not-found.error";
+import { HashPasswordHelper } from "../helpers/hash-password.helper";
 import jwt from "jsonwebtoken";
 
 interface IUserLogin {

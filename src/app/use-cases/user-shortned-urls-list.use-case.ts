@@ -1,5 +1,5 @@
-import { ShortnedUrlEntitiy } from "../../domain/entities/shortned-url.entity.js";
-import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository.js";
+import { ShortnedUrlEntitiy } from "../../domain/entities/shortned-url.entity";
+import { IShortnedUrlRepository } from "../../domain/repositories/shortned-url.repository";
 
 export class UserShortnedUrlsListUseCase {
     constructor(private readonly shortnedUrlsRepository: IShortnedUrlRepository) { }

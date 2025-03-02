@@ -1,5 +1,5 @@
-import { ShortnedUrlNotFound } from "../../../app/errors/shortned-url-not-found.error.js";
-import { CompactUrlUseCase } from "../../../app/use-cases/compact-url.use-case.js";
+import { ShortnedUrlNotFound } from "../../../app/errors/shortned-url-not-found.error";
+import { CompactUrlUseCase } from "../../../app/use-cases/compact-url.use-case";
 
 interface CompactUrlResponse {
     url: string

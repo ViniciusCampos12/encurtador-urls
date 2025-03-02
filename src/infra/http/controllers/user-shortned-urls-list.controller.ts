@@ -1,5 +1,5 @@
-import { UserShortnedUrlsListUseCase } from "../../../app/use-cases/user-shortned-urls-list.use-case.js";
-import { UserEntitiy } from "../../../domain/entities/user.entity.js";
+import { UserShortnedUrlsListUseCase } from "../../../app/use-cases/user-shortned-urls-list.use-case";
+import { UserEntitiy } from "../../../domain/entities/user.entity";
 
 interface UserShortnedUrlsListResponse {
     id: string

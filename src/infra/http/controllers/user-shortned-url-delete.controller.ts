@@ -1,6 +1,6 @@
-import { ShortnedUrlNotFound } from "../../../app/errors/shortned-url-not-found.error.js";
-import { UserShortnedUrlDeleteUseCase } from "../../../app/use-cases/user-shortned-url-delete.use-case.js";
-import { UserEntitiy } from "../../../domain/entities/user.entity.js";
+import { ShortnedUrlNotFound } from "../../../app/errors/shortned-url-not-found.error";
+import { UserShortnedUrlDeleteUseCase } from "../../../app/use-cases/user-shortned-url-delete.use-case";
+import { UserEntitiy } from "../../../domain/entities/user.entity";
 
 export class UserShortnedUrlDeleteController {
     constructor(private readonly userShortnedUrlDeleteUseCase: UserShortnedUrlDeleteUseCase) { }

@@ -1,7 +1,7 @@
-import { ShortenUrlShortCodeExistsError } from "../../../app/errors/shorten-url-short-code-exists.error.js";
-import { ShortenUrlUseCase } from "../../../app/use-cases/shorten-url.use-case.js";
-import { UserEntitiy } from "../../../domain/entities/user.entity.js";
-import { ShortenUrlDto } from "../dtos/shorten-url.dto.js";
+import { ShortenUrlShortCodeExistsError } from "../../../app/errors/shorten-url-short-code-exists.error";
+import { ShortenUrlUseCase } from "../../../app/use-cases/shorten-url.use-case";
+import { UserEntitiy } from "../../../domain/entities/user.entity";
+import { ShortenUrlDto } from "../dtos/shorten-url.dto";
 
 interface ShortenUrlResponse {
     url: string

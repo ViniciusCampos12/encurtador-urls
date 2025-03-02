@@ -1,4 +1,4 @@
-import { UserEntitiy } from "../entities/user.entity.js";
+import { UserEntitiy } from "../entities/user.entity";
 
 export abstract class IUserRepository {
     abstract create(user: UserEntitiy): Promise<void>;

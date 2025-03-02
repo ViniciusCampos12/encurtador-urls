@@ -1,11 +1,11 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { validationMiddleware } from "../middlewares/validator.middleware.js";
-import { ShortenUrlDto } from "../dtos/shorten-url.dto.js";
-import { ShortnedUrlRepository } from "../../database/prisma/repositories/shortned-url.repository.js";
-import { ShortenUrlUseCase } from "../../../app/use-cases/shorten-url.use-case.js";
-import { ShortenUrlController } from "../controllers/shorten-url.controller.js";
-import { authOptionalMiddleware } from "../middlewares/auth-optional.middleware.js";
-import { UserEntitiy } from "../../../domain/entities/user.entity.js";
+import { validationMiddleware } from "../middlewares/validator.middleware";
+import { ShortenUrlDto } from "../dtos/shorten-url.dto";
+import { ShortnedUrlRepository } from "../../database/prisma/repositories/shortned-url.repository";
+import { ShortenUrlUseCase } from "../../../app/use-cases/shorten-url.use-case";
+import { ShortenUrlController } from "../controllers/shorten-url.controller";
+import { authOptionalMiddleware } from "../middlewares/auth-optional.middleware";
+import { UserEntitiy } from "../../../domain/entities/user.entity";
 
 const shortnedUrlRouter = Router();
 const shortnedUrlRepository = new ShortnedUrlRepository();

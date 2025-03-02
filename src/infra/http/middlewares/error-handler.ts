@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ErrorManager } from "../../../app/errors/error-manager.error.js";
+import { ErrorManager } from "../../../app/errors/error-manager.error";
 
 export function errorHandlerr(err: ErrorManager, req: Request, res: Response, next: NextFunction) {
   if (err instanceof ErrorManager) {

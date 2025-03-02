@@ -1,4 +1,4 @@
-import { ShortnedUrlEntitiy } from "../entities/shortned-url.entity.js";
+import { ShortnedUrlEntitiy } from "../entities/shortned-url.entity";
 
 export abstract class IShortnedUrlRepository {
     abstract create(shortnedUrl: ShortnedUrlEntitiy): Promise<void>;

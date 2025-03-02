@@ -1,4 +1,4 @@
-import { UserRepository } from './../../database/prisma/repositories/user.repository.js';
+import { UserRepository } from './../../database/prisma/repositories/user.repository';
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 

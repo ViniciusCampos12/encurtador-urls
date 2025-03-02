@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { UserEntitiy } from "../../../../domain/entities/user.entity.js";
+import { UserEntitiy } from "../../../../domain/entities/user.entity";
 
 export class UserMapper {
     static toPrisma(user: UserEntitiy) {

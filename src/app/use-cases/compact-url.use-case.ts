@@ -1,5 +1,5 @@
-import { IShortnedUrlRepository } from '../../domain/repositories/shortned-url.repository.js';
-import { ShortnedUrlNotFound } from '../errors/shortned-url-not-found.error.js';
+import { IShortnedUrlRepository } from '../../domain/repositories/shortned-url.repository';
+import { ShortnedUrlNotFound } from '../errors/shortned-url-not-found.error';
 
 export class CompactUrlUseCase {
     constructor(private readonly shortnedUrlRepository: IShortnedUrlRepository) { }
