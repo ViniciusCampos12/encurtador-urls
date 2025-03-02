@@ -2,7 +2,6 @@
   "name": "encurtador_urls",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "start:dev": "tsx watch src/main.ts",
     "start:prod": "node dist/main.js",
