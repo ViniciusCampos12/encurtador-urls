@@ -19,9 +19,9 @@ export class UserLoginUseCase {
         if (!user) {
             throw new UserNotFoundError("User not found!");
         }
-
-        const passwordMatches = HashPasswordHelper.comparePassword(password, user.password);
-
+      
+        const passwordMatches = await HashPasswordHelper.comparePassword(password, user.password);
+      
         if (!passwordMatches) {
             throw new UserInvalidPasswordError("Invalid credentials. Check your password");
         }
