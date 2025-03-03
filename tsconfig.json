@@ -14,11 +14,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
     "node_modules",
-    "dist"
-  ]
+    "dist",
+    "test",
+    "**/*.spec.ts",
+    "jest.config.js"
+  ],
 }
