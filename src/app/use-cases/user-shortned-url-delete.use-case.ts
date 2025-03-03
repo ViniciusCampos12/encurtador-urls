@@ -17,6 +17,7 @@ export class UserShortnedUrlDeleteUseCase {
         if (!userShortnedUrl) {
             throw new ShortnedUrlNotFound("Unable to delete url. Try again please");
         }
+        
         const updateShortnedUrlEntitiy = new ShortnedUrlEntitiy({
             id: userShortnedUrl.id,
             shortCode: userShortnedUrl.shortCode,

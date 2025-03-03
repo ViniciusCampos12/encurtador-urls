@@ -18,6 +18,7 @@ export class UserShortnedUrlEditUseCase {
         if (!userShortnedUrl) {
             throw new ShortnedUrlNotFound("Unable to update url. Try again please");
         }
+        
         const updateShortnedUrlEntitiy = new ShortnedUrlEntitiy({
             id: userShortnedUrl.id,
             shortCode: userShortnedUrl.shortCode,
