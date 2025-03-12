@@ -35,13 +35,19 @@ Neste caso, o arquivo `.env.example` é disponibilizado apenas para fins de conf
    docker exec -it api sh
    ```
 
-4. **Execute as migrações do banco de dados:**  
+4. **Execute os testes automatizados(opcional):**  
+
+   ```sh
+   npm run test
+   ```
+
+5. **Execute as migrações do banco de dados:**  
 
    ```sh
    npx prisma migrate deploy && npx prisma generate
    ```
 
-5. **Compile e inicie a aplicação:**  
+6. **Compile e inicie a aplicação:**  
 
    ```sh
    npm run build && npm run start:prod
@@ -148,8 +154,8 @@ POST /api/shortned-urls/shorten
 
 ## 🛠️ Pontos de Melhoria  
 
-### 🔹 Importância dos Testes na Aplicação  
-É fundamental a utilização de **testes automatizados**, tanto de integração quanto unitários, em qualquer aplicação. Esses testes não apenas ajudam a **evitar bugs**, mas também servem como **documentação viva** do código, garantindo que todas as partes do sistema funcionem conforme o esperado. Além disso, a implementação desses testes **mantém a estabilidade** do código, permitindo modificações e evoluções de forma controlada e segura.
+### 🔹 Atualização de Framework  
+Uma possível melhoria seria trocar o **Express** por **Fastify**, que é mais rápido e otimizado para alta performance. Outra alternativa seria o **NestJS**, uma solução mais robusta, indicada para sistemas que exigem escalabilidade e estrutura mais complexa.
 
 ### 🔹 Implementação do NGINX como Load Balancer  
 A integração do NGINX como balanceador de carga pode **melhorar a performance** da aplicação e **aumentar a segurança**, distribuindo as requisições de forma eficiente entre os servidores.  
