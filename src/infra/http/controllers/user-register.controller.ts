@@ -1,18 +1,30 @@
-import { UserExistsError } from "../../../app/errors/user-exists.error";
 import { UserRegisterUseCase } from "../../../app/use-cases/user-register.use-case";
-import { UserRegisterDto } from "../dtos/user-register.dto";
+import { NextFunction, Request, Response } from "express";
+import { z } from 'zod';
 
 export class UserRegisterController {
     constructor(private readonly userRegisterUseCase: UserRegisterUseCase) { }
 
-    async handle(body: UserRegisterDto): Promise<void> {
+    async handle(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-           await this.userRegisterUseCase.execute(body);
+            const userSchema = z.object({
+                name: z.string().min(6).max(191),
+                password: z.string().min(8).max(24),
+                email: z.string().email()
+            })
+            const { name, password, email } = userSchema.parse(req.body);
+
+            await this.userRegisterUseCase.execute({
+                name,
+                password,
+                email
+            });
+
+            res.status(201).json({
+                status: "successfully registered."
+            });
         } catch (err) {
-            if (err instanceof UserExistsError) {
-                throw err;
-            }
-            throw new Error(err.message);
+            next(err);
         }
     }
 }

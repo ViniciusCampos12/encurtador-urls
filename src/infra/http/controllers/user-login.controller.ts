@@ -1,28 +1,32 @@
-import { UserInvalidPasswordError } from "../../../app/errors/user-invalid-password.error";
-import { UserNotFoundError } from "../../../app/errors/user-not-found.error";
 import { UserLoginUseCase } from "../../../app/use-cases/user-login.use-case";
-import { UserLoginDto } from "../dtos/user-login.dto";
+import { NextFunction, Request, Response } from "express";
+import { z } from 'zod';
 
 interface UserLoginResponse {
-    jwt: string
+    jwt: string;
 }
 
 export class UserLoginController {
     constructor(private readonly userLoginUseCase: UserLoginUseCase) { }
 
-    async handle(body: UserLoginDto): Promise<UserLoginResponse> {
+    async handle(req: Request, res: Response<UserLoginResponse>, next: NextFunction): Promise<void> {
         try {
-            const { email, password } = body;
+            const userLoginSchema = z.object({
+                email: z.string().email(),
+                password: z.string().min(8).max(24)
+            })
+            const { email, password } = userLoginSchema.parse(req.body);
+
             const token = await this.userLoginUseCase.execute({
                 email,
                 password
             })
-            return { jwt: token }
+            
+            res.status(200).json({
+                jwt: token
+            });
         } catch (err) {
-            if (err instanceof UserNotFoundError || err instanceof UserInvalidPasswordError) {
-                throw err;
-            }
-            throw new Error(err.message);
+            next(err);
         }
     }
 }
